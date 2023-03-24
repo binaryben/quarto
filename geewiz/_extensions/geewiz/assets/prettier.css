@@ -1,0 +1,154 @@
+:root {
+  --gcode-annotation-color: var(--bs-gray-500);
+  --gcode-dark-color: #444;
+  --gcode-light-color: #eee;
+  --gcode-x-axis-color: var(--bs-red);
+  --gcode-y-axis-color: #44cc11;
+  --gcode-z-axis-color: var(--bs-blue);
+  --gcode-coolant-color: var(--bs-cyan);
+  --gcode-movement-color: rgb(214, 144, 214);
+  --gcode-spindle-color: var(--bs-purple);
+  --gcode-tool-color: var(--bs-orange);
+  --gcode-wcs-color: rgb(134, 86, 51);
+  --gcode-workflow-color: var(--bs-yellow);
+}
+
+/* Basic word formatting */
+
+.gcode-word {
+  display: inline-block;
+  padding: 0.1em 0.6em;
+  font-size: 0.8em;
+  font-family: var(--bs-font-monospace);
+  color: var(--gcode-light-color);
+  background: var(--gcode-dark-color);
+  border-radius: 0.3em;
+  border: 1px solid var(--gcode-dark-color);
+  user-select: none;
+  cursor: pointer;
+}
+
+.sourceCode .gcode-word {
+  font-size: 0.9em;
+}
+
+.gcode-word + .gcode-word {
+  margin-left: 0.3em
+}
+
+/* Basic alt stylings */
+
+.gcode-word.is-annotation {
+  background: var(--bs-body-background);
+  border-color: var(--gcode-annotation-color);
+  color: var(--gcode-annotation-color);
+}
+
+.gcode-word.is-annotation:hover { /* Improve contrast on hover */
+  border-color: var(--bs-body-color);
+  color: var(--bs-body-color);
+}
+
+.gcode-word.is-parameter {
+  background: var(--bs-body-background);
+  color: var(--gcode-dark-color);
+}
+
+/* Coolant setting colours */
+
+.gcode-word.is-coolant {
+  border-color: var(--gcode-coolant-color);
+}
+.gcode-word.is-coolant.is-command {
+  background: var(--gcode-coolant-color);
+  color: var(--gcode-light-color);
+}
+.gcode-word.is-coolant.is-parameter {
+  color: var(--gcode-coolant-color);
+}
+
+/* Movement colours */
+
+.gcode-word.is-movement {
+  border-color: var(--gcode-movement-color);
+}
+.gcode-word.is-movement.is-command {
+  background: var(--gcode-movement-color);
+  color: var(--gcode-dark-color);
+}
+.gcode-word.is-movement.is-parameter {
+  color: var(--gcode-movement-color);
+}
+/* Spindle setting colours */
+
+.gcode-word.is-spindle {
+  border-color: var(--gcode-spindle-color);
+}
+.gcode-word.is-spindle.is-command {
+  background: var(--gcode-spindle-color);
+  color: var(--gcode-light-color);
+}
+.gcode-word.is-spindle.is-parameter {
+  color: var(--gcode-spindle-color);
+}
+
+/* Tool colours */
+
+.gcode-word.is-tool {
+  border-color: var(--gcode-tool-color);
+}
+.gcode-word.is-tool.is-command {
+  background: var(--gcode-tool-color);
+  color: var(--gcode-dark-color);
+}
+.gcode-word.is-tool.is-parameter {
+  color: var(--gcode-tool-color);
+}
+
+/* WCS colours */
+
+.gcode-word.is-wcs {
+  border-color: var(--gcode-wcs-color);
+}
+.gcode-word.is-wcs.is-command {
+  background: var(--gcode-wcs-color);
+  color: var(--gcode-light-color);
+}
+.gcode-word.is-wcs.is-parameter {
+  color: var(--gcode-wcs-color);
+}
+
+/* Workflow colours */
+
+.gcode-word.is-workflow {
+  border-color: var(--gcode-workflow-color);
+}
+.gcode-word.is-workflow.is-command {
+  background: var(--gcode-workflow-color);
+  color: var(--gcode-dark-color);
+}
+.gcode-word.is-workflow.is-parameter {
+  color: var(--gcode-workflow-color);
+}
+
+/* Axis related parameter colours */
+
+/* Borders */
+.gcode-word.is-x-axis { border-color: var(--gcode-x-axis-color); }
+.gcode-word.is-y-axis { border-color: var(--gcode-y-axis-color); }
+.gcode-word.is-z-axis { border-color: var(--gcode-z-axis-color); }
+/* Backgrounds */
+.gcode-word.is-x-axis:not(.is-parameter) {
+  background: var(--gcode-x-axis-color);
+}
+.gcode-word.is-y-axis:not(.is-parameter) {
+  background: var(--gcode-y-axis-color);
+  color: var(--gcode-dark-color);
+}
+.gcode-word.is-z-axis:not(.is-parameter) {
+  background: var(--gcode-z-axis-color);
+}
+/* Parameter text colours */
+.gcode-word.is-x-axis.is-parameter { color: var(--gcode-x-axis-color); }
+.gcode-word.is-y-axis.is-parameter { color: var(--gcode-y-axis-color); }
+.gcode-word.is-z-axis.is-parameter { color: var(--gcode-z-axis-color); }

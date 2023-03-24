@@ -1,0 +1,739 @@
+{
+  "address": {
+    "%": {
+      "description": "Program Start / End",
+      "class": [
+        "annotation"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Signals the start or end of a CNC program. Should be preceeded by M30 to end a program. Usually optional at start of program in modern controllers. Mainly a relic from when CNC programs ran on tape."
+    },
+    ";": {
+      "description": "Comment",
+      "class": [
+        "annotation"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Anything after a semicolon will be ignored. Usually used at the start of a program to list machine, tool and author information. Can also be used at key points in programs. Different machines use an alternative to semicolons for comments."
+    },
+    "(": {
+      "description": "Comment",
+      "class": [
+        "annotation"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Anything between parentheses will be ignored. Usually used at the start of a program to list machine, tool and author information. Can also be used at key points in programs. Different machines use an alternative to parentheses for comments."
+    },
+    "A": {
+      "description": "Set Position of A-axis",
+      "class": [
+        "position",
+        "x-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The A-axis is a rotational axis around the X-axis. Movement is absolute (G90) or incremental (G91). Measurement is in inches (G20) or metric (G21)."
+    },
+    "B": {
+      "description": "Set Position of B-axis",
+      "class": [
+        "position",
+        "y-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The B-axis is a rotational axis around the Y-axis. Movement is absolute (G90) or incremental (G91). Measurement is in inches (G20) or metric (G21)."
+    },
+    "C": {
+      "description": "Set Position of C-axis",
+      "class": [
+        "position",
+        "z-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The C-axis is a rotational axis around the Z-axis. Movement is absolute (G90) or incremental (G91). Measurement is in inches (G20) or metric (G21)."
+    },
+    "D": {
+      "description": "Tool Diameter Offset",
+      "class": [
+        "tool",
+        "parameter"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": false
+      },
+      "comment": "Allows for compensation when using different tools than originally programmed for in a CAM workflow. Offset will be left (G41; climb milling) or right (G42; conventional milling)."
+    },
+    "E": {
+      "description": "Threading Feed Rate",
+      "class": [
+        "movement",
+        "parameter"
+      ],
+      "machine": {
+        "milling": false,
+        "turning": true
+      },
+      "comment": "Defines precision feedrate for threading on lathes."
+    },
+    "F": {
+      "description": "Set Feed Rate",
+      "class": [
+        "movement",
+        "parameter"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Set in in/min (G90) or mm/min (G91) for mills. Set in in/rev (G90) or mm/rev (G91) for lathes. Feed rate, spindle speed, tool selection and material type will affect the surface finish."
+    },
+    "G": {
+      "description": "Geometric Code",
+      "class": [
+        "prepatory"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Usually defines what kind of motion is wanted (e.g., rapid positioning, linear feed, circular feed, fixed cycle) or what offset value to use. They have over time been used for more general purpose codes and could be consider Generic Codes."
+    },
+    "H": {
+      "description": "Tool Length Offset (Height)",
+      "class": [
+        "tool",
+        "parameter"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Allows for compensation when using different tools than originally programmed for in a CAM workflow. Offset will be negative (G43; more common) or positive (G44)."
+    },
+    "I": {
+      "description": "Define Arc Center (X-Axis)",
+      "class": [
+        "parameter",
+        "x-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The X-axis position of the arc center in G02 and G03 movements is relative to the current tool position regardless of G90/G91 settings."
+    },
+    "J": {
+      "description": "Define Arc Center (Y-Axis)",
+      "class": [
+        "parameter",
+        "y-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The Y-axis position of the arc center in G02 and G03 movements is relative to the current tool position regardless of G90/G91 settings."
+    },
+    "K": {
+      "description": "Define Arc Center (Z-Axis)",
+      "class": [
+        "parameter",
+        "z-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The Z-axis position of the arc center in G02 and G03 movements is relative to the current tool position regardless of G90/G91 settings."
+    },
+    "L": {
+      "description": "Fixed Cycle Loop Count",
+      "class": [
+        "parameter",
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Defines number of loops (defaults to 1 unless specified otherwise) of a fixed cycle at each position. Useful when paired with G91 to repeat patterns such as holes. May also be used with G10 as a parameter for setting work offsets programmatically."
+    },
+    "M": {
+      "description": "Miscellaneous Function",
+      "class": [
+        "prepatory"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Used to call action or auxiliary commands. Many M-codes call for machine related functions so many consider M to stand for machine, although it was not intended to."
+    },
+    "N": {
+      "description": "Sequence Number",
+      "class": [
+        "annotation"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Useful for programming logic to tell the controller to \"Go to\" another point in the program defined by a sequence number (N30 for example). Otherwise optional and often ommitted. Does not corrolate with file line number. Can also be used as a parameter in G10 commands."
+    },
+    "O": {
+      "description": "Program Name",
+      "class": [
+        "annotation"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Usually formatted as \"O#### (name)\" where #### is the program number and name is a short description of the program."
+    },
+    "P": {
+      "description": "Parameter",
+      "class": [
+        "parameter"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Serves as a general purpose parameter address for various G and M codes. Check other commands in current block for context."
+    },
+    "Q": {
+      "description": "Peck Drill Increment",
+      "class": [
+        "parameter",
+        "drill"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": false
+      },
+      "comment": "Used in G73 and G83 operations."
+    },
+    "R": {
+      "description": "Set Radius or Retract",
+      "class": [
+        "parameter"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Set the arc radius for G02 and G03 commands (Not all controllers support R for these commands; use IJK instead). Also used to set the retract height for other operations."
+    },
+    "S": {
+      "description": "Set Speed",
+      "class": [
+        "parameter",
+        "spindle"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Defines spindle speed (G97; rev/min) or surface speed (G96). In CSS mode (G96), S is set as sfm (G20) or m/min (G21). Feed rate, spindle speed, tool selection and material type will affect the surface finish."
+    },
+    "T": {
+      "description": "Tool Selection",
+      "class": [
+        "tool",
+        "parameter"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "This should usually be called before an M06 command to denote which tool to insert next. May trigger an ATC (if fitted) to retrieve the tool ready for use. Check controller documentation for more information on expected behaviour."
+    },
+    "U": {
+      "description": "Set Position of U-axis",
+      "class": [
+        "position",
+        "x-axis"
+      ],
+      "machine": {
+        "milling": false,
+        "turning": true
+      },
+      "comment": "Allows incremental postioning of X-axis alongside other absolute positional commands. If address is present on a machine, G90 is usually repurposed as a fixed cycle address for roughing operations."
+    },
+    "V": {
+      "description": "Set Position of V-axis",
+      "class": [
+        "position",
+        "y-axis"
+      ],
+      "machine": {
+        "milling": false,
+        "turning": true
+      },
+      "comment": "Allows incremental postioning of Y-axis alongside other absolute positional commands. This is infrequently used and most CNC lathes only use a XZ/UW system."
+    },
+    "W": {
+      "description": "Set Position of W-axis",
+      "class": [
+        "position",
+        "z-axis"
+      ],
+      "machine": {
+        "milling": false,
+        "turning": true
+      },
+      "comment": "Allows incremental postioning of Z-axis alongside other absolute positional commands. If address is present on a machine, G90 is usually repurposed as a fixed cycle address for roughing operations."
+    },
+    "X": {
+      "description": "Set Position of X-axis",
+      "class": [
+        "position",
+        "x-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Movement is absolute (G90) or incremental (G91). Measurement is in inches (G20) or metric (G21). X can also be used instead of P or U on some machines to define dwell time (G04)."
+    },
+    "Y": {
+      "description": "Set Position of Y-axis",
+      "class": [
+        "position",
+        "y-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Movement is absolute (G90) or incremental (G91). Measurement is in inches (G20) or metric (G21)."
+    },
+    "Z": {
+      "description": "Set Position of Z-axis",
+      "class": [
+        "position",
+        "z-axis"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Movement is absolute (G90) or incremental (G91). Measurement is in inches (G20) or metric (G21)."
+    }
+  },
+  "command": {
+    "G00": {
+      "description": "Rapid Positioning",
+      "class": [
+        "movement"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Moves each axis at fastest speed until the given position for that axis is reached. Caution should be used on 2 or 3-axis moves as movement is not necessarily linear from start point to endpoint. A shorter vector usually finishes first resulting in hockey-stick like motion."
+    },
+    "G01": {
+      "description": "Linear Interpolation",
+      "class": [
+        "movement"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Moves in a straight line from the current position to the given position. This is one of the most frequently used commands."
+    },
+    "G02": {
+      "description": "Circular Interpolation (CW)",
+      "class": [
+        "movement"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Moves in a circular more clockwise from the current position to the given position. The size of the arc it follows is determined by either the R or IJK parameters."
+    },
+    "G03": {
+      "description": "Circular Interpolation (CCW)",
+      "class": [
+        "movement"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Moves in a circular more counter clockwise from the current position to the given position. The size of the arc it follows is determined by either the R or IJK parameters."
+    },
+    "G04": {
+      "description": "Dwell",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Takes an address (usually P or X) specifying a period of time (typically in ms) to pause. The unit and address of the time value varies between controller."
+    },
+    "G10": {
+      "description": "Programmable Data Input",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Modifies the value of work coordinate and tool offsets using given values in gcode block. Check controller documentation for which values can be set and how."
+    },
+    "G17": {
+      "description": "XY Plane Selection",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": false
+      }
+    },
+    "G18": {
+      "description": "ZX Plane Selection",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      }
+    },
+    "G19": {
+      "description": "YZ Plane Selection",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": false
+      }
+    },
+    "G20": {
+      "description": "Imperial Units",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Set measurement units to inches. The usual minimum increment in G20 is one ten-thousandth of an inch (0.0001\"), which is a larger distance than the usual minimum increment in G21."
+    },
+    "G21": {
+      "description": "Metric Units",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Set measurement units to millimetres. The usual minimum increment in G21 is one micrometre (0.001mm), which is a smaller distance than the usual minimum increment in G20."
+    },
+    "G28": {
+      "description": "Return Home",
+      "class": [
+        "movement"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Return to the machine zero point. Can optionally be given an XYZ point (relative to the work origin) to pass through on the way to the home position."
+    },
+    "G30": {
+      "description": "Park Spindle",
+      "class": [
+        "movement"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Return to secondary home position (eg. a parking location for loading material). If more than one secondary home position is available, P1 to P4 can select which to go to. Can also optionally be given an XYZ point (relative to the work origin) to pass through on the way to the home position."
+    },
+    "G53": {
+      "description": "Absolute Interpolation",
+      "class": [
+        "movement"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Similar to G01, except coordinates will be absolutely positioned relative to machine home instead of the current WCS. This is regardless of if incremental programming is enabled. This is non modal (WCS and positioning mode will revert to prior configuration) and can be paired with G00 to move at rapid feedrate."
+    },
+    "G54": {
+      "description": "Select WCS",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Six Work Coordinate System (WCS) offset points (G54 to G59) can be defined by default. Each WCS is a set of axis positions (x,y,z) relative to the machine home position (0,0,0). They are usually used to define a work origin point but may be used for more advanced programming techniques."
+    },
+    "G54.1": {
+      "description": "Select WCS (Extended)",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Up to 48 more WCSs besides the 6 provided as standard by G54 to G59. Select the additional WCS using P1 through P48."
+    },
+    "G55": { "inherit": "G54" },
+    "G56": { "inherit": "G54" },
+    "G57": { "inherit": "G54" },
+    "G58": { "inherit": "G54" },
+    "G59": { "inherit": "G54" },
+    "G90": {
+      "description": "Absolute Programming",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": false
+      },
+      "comment": "Positioning movements are defined with reference to origin of the current WCS."
+    },
+    "G91": {
+      "description": "Incremental Programming",
+      "class": [
+        "wcs"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": false
+      },
+      "comment": "Positioning movements are defined with reference to current tool position."
+    },
+    "M00": {
+      "description": "Program Stop",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Machine will always stop the program and wait for the operator to start it again."
+    },
+    "M01": {
+      "description": "Optional Stop",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Machine may optionally stop (depending on controller settings) and wait for the operator to start the program again."
+    },
+    "M02": {
+      "description": "End of Program",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The original program-end code. Now considered obsolete but still supported for backward compatibility. May be equivilant to M30 on some controllers but may not rewind on others (in line with original behaviour)."
+    },
+    "M03": {
+      "description": "Spindle On (CW)",
+      "class": [
+        "spindle"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true,
+        "plasma": {
+          "description": "Plasma Torch On"
+        }
+      },
+      "comment": "The speed of the spindle is determined by the S parameter. This may be set earlier in the program or in the same block as this command."
+    },
+    "M04": {
+      "description": "Spindle On (CCW)",
+      "class": [
+        "spindle"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "The speed of the spindle is determined by the S parameter. This may be set earlier in the program or in the same block as this command."
+    },
+    "M05": {
+      "description": "Spindle Stop",
+      "class": [
+        "spindle"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true,
+        "plasma": {
+          "description": "Plasma Torch Off"
+        }
+      },
+      "comment": "The current speed of the spindle (set previously by the S parameter) is saved even though the spindle has stopped. The next M03 or M04 command would start the spindle at this speed if no other speed is given."
+    },
+    "M06": {
+      "description": "Tool Change",
+      "class": [
+        "tool"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Used the T parameter to determine which tool to load. Check controller documentation for more information on expected behaviour."
+    },
+    "M07": {
+      "description": "Coolant On (Mist)",
+      "class": [
+        "coolant"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "For machines where mist coolant is available."
+    },
+    "M08": {
+      "description": "Coolant On (Flood)",
+      "class": [
+        "coolant"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "For machines where flood coolant is available."
+    },
+    "M09": {
+      "description": "Coolant Off",
+      "class": [
+        "coolant"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Turns off any coolant options that are on."
+    },
+    "M10": {
+      "description": "Clamp On / Closed",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "For machines where a pallet loader or chuck or rotary table clamp is fitted."
+    },
+    "M11": {
+      "description": "Clamp Off / Open",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "For machines where a pallet loader or chuck or rotary table clamp is fitted."
+    },
+    "M30": {
+      "description": "End of program (Rewind)",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "M30 is considered the standard program-end code, and returns execution to the top of the program."
+    },
+    "M98": {
+      "description": "Sub Program Start",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Takes a P parameter to specify which subprogram to call, for example, \"M98 P8979\" calls subprogram O8979. Some controllers also allow the use of an L parameter to define the number of times to loop the subprogram."
+    },
+    "M99": {
+      "description": "Sub Program End",
+      "class": [
+        "workflow"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Usually placed at the end of a subprogram to end and return back to the program that initialised it."
+    },
+    "M100": {
+      "description": "Clean Nozzle",
+      "class": [
+        "tool"
+      ],
+      "machine": {
+        "milling": false,
+        "turning": false,
+        "printer": true
+      },
+      "comment": "Some 3d printers have a predefined routine for wiping the extruder nozzle in the X and Y direction often against a flexible scraper mounted to the dump area."
+    },
+    "MSG": {
+      "description": "Display a Message",
+      "class": [
+        "annotation"
+      ],
+      "machine": {
+        "milling": true,
+        "turning": true
+      },
+      "comment": "Used to display a message (max 34 characters) on Masso controllers. Can be dismissed programatically or followed by M00 or M01 to require operator input."
+    }
+  }
+}
